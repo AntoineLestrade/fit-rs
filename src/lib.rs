@@ -58,8 +58,8 @@ pub fn run(path: &PathBuf) -> Vec<Message> {
     let mut fielddefinition_buffer: [FieldDefinition; 128];
     let mut datafield_buffer: [DataField; 128];
     unsafe {
-        fielddefinition_buffer = std::mem::uninitialized();
-        datafield_buffer = std::mem::uninitialized();
+        fielddefinition_buffer = std::mem::MaybeUninit::uninit().assume_init();
+        datafield_buffer = std::mem::MaybeUninit::uninit().assume_init();
         for elem in &mut datafield_buffer[..] {
             std::ptr::write(elem, DataField::default());
         }
