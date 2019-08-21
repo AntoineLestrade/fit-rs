@@ -178,7 +178,7 @@ pub fn run(path: &PathBuf) -> Vec<Message> {
                             }
                             FieldType::LocalDateTime => {
                                 if let Value::U32(ref inner) = v.value {
-                                    let time = *inner + PSEUDO_EPOCH - 3600;
+                                    let time = *inner + PSEUDO_EPOCH;
                                     std::mem::replace(&mut v.value, Value::Time(time));
                                 }
                             }
