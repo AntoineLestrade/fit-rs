@@ -521,7 +521,6 @@ pub fn read_next_field(
         0 | 13 => {
             // enum / byte
             if size > 1 {
-                println!("0/13:enum/byte: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -536,7 +535,6 @@ pub fn read_next_field(
         1 => {
             // sint8
             if size > 1 {
-                println!("1 i8: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -573,7 +571,6 @@ pub fn read_next_field(
             // sint16
             let number_of_values = size / 2;
             if number_of_values > 1 {
-                println!("3 i16: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -612,7 +609,6 @@ pub fn read_next_field(
             // sint32
             let number_of_values = size / 4;
             if number_of_values > 1 {
-                println!("5 i32: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -667,7 +663,6 @@ pub fn read_next_field(
             // float32
             let number_of_values = size / 4;
             if number_of_values > 1 {
-                println!("8 f32: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -684,7 +679,6 @@ pub fn read_next_field(
             // float64
             let number_of_values = size / 8;
             if number_of_values > 1 {
-                println!("9 f64: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -700,7 +694,6 @@ pub fn read_next_field(
         10 => {
             // uint8z
             if size > 1 {
-                println!("10:uint8z {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -716,7 +709,6 @@ pub fn read_next_field(
             // uint16z
             let number_of_values = size / 2;
             if number_of_values > 1 {
-                println!("11 u16: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -732,7 +724,6 @@ pub fn read_next_field(
             // uint32z
             let number_of_values = size / 4;
             if number_of_values > 1 {
-                println!("12 u32: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -748,7 +739,6 @@ pub fn read_next_field(
             // sint64
             let number_of_values = size / 8;
             if number_of_values > 1 {
-                println!("14 i64: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -764,7 +754,6 @@ pub fn read_next_field(
             // uint64
             let number_of_values = size / 8;
             if number_of_values > 1 {
-                println!("15 u64: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
@@ -780,7 +769,6 @@ pub fn read_next_field(
             // uint64z
             let number_of_values = size / 8;
             if number_of_values > 1 {
-                println!("16 u64: {}", size);
                 skip_bytes(map, size);
                 Value::None
             } else {
