@@ -1,3 +1,4 @@
+use std::hash::BuildHasher;
 use copyless::VecHelper;
 use memmap::MmapOptions;
 use std::collections::{HashMap, VecDeque};
@@ -44,6 +45,7 @@ const FIELD_DEFINITION_BASE_NUMBER: u8 = 0b00_011_111;
 const COORD_SEMICIRCLES_CALC: f32 = (180f64 / (std::u32::MAX as u64 / 2 + 1) as f64) as f32;
 const PSEUDO_EPOCH: u32 = 631_065_600;
 
+#[allow(clippy::cognitive_complexity)]
 pub fn run(path: &PathBuf) -> Vec<Message> {
     let mut global_string_map: HashMap<u8, String> = HashMap::with_capacity(64);
     let file = File::open(path).unwrap();
@@ -505,13 +507,13 @@ fn reverse_map_base_type(i: u8) -> u8 {
 }
 
 #[allow(clippy::cognitive_complexity)]
-pub fn read_next_field(
+pub fn read_next_field<S: BuildHasher>(
     base_type: u8,
     size: u8,
     endianness: Endianness,
     map: &mut &[u8],
     skip: bool,
-    global_string_map: &mut HashMap<u8, String>,
+    global_string_map: &mut HashMap<u8, String, S>,
 ) -> Value {
     if skip {
         skip_bytes(map, size);

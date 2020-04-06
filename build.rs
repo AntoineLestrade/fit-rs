@@ -112,7 +112,7 @@ fn write_custom_type_match(set: &HashSet<String>, types_store: &HashMap<String, 
     );
     writeln!(
         &mut outfile,
-        "pub fn enum_type(f: FieldType, k: u16) -> Option<&'static str> {{\n    match f {{",
+        "#[allow(clippy::cognitive_complexity)]\npub fn enum_type(f: FieldType, k: u16) -> Option<&'static str> {{\n    match f {{",
     )
     .unwrap();
     for f in set {
